@@ -24,34 +24,40 @@ describe Card do
   describe "Testing to_s" do
 
     it "to_s returns a readable String value logically for values 2-10" do
-      # Test to ensure that to_s works for cards values 2-10
-      # for example:  "2 of diamonds"
+      (2..10).each do |value| # each value between 2-10 inclusive
+        card = Card.new(value, :hearts)
+        expect(card.to_s).must_equal "#{value} of hearts" # verify matching string
+      end
     end
 
     it "to_s returns a readable String value for Ace, Jack, Queen, King" do
-      # Test to ensure that to_s works for cards values 1, and 11-13
-      # For example: "Queen of hearts"
-      # The current implementation of to_s does not address this feature
-      # Write the test, see it fail, then modify to_s to make it pass!
-      # (Consider writing a helper method!)
-      #
-      # For reference:
-      #  1: Ace
-      #  11: Jack
-      #  12: Queen
-      #  13: King
+      # hold instances of Ace, Jack Queen, King cards
+      face_str = [Card.new(1, :spades), Card.new(11, :clubs), Card.new(12, :hearts), Card.new(13, :diamonds)]
+      # holds corresponding expected result
+      to_s_result= ["Ace of spades", "Jack of clubs", "Queen of hearts", "King of diamonds"]
+      # test that to_s leads to matching face_str and to_s_result elements per same index.
+      face_str.length.times do |i|
+        expect(face_str[i].to_s).must_equal to_s_result[i]
+      end
     end
   end
 
   describe "Reader methods" do
 
     it "Can retrieve the value of the card using a `.value`." do
-      # ensure that `.value works as expected`
+      13.times do |i| # for all card values
+        card = Card.new(i + 1, :diamonds) # create card instances with just a single symbol
+        expect(card.value).must_equal i + 1 # verify value
+        expect(card.value).must_be_instance_of Integer # verify data type
+      end
     end
 
     it "Can retrieve the value of the card using a `.suit`." do
-      # ensure that `.suit works as expected returning the symbol of the suit`
-
+      [:hearts, :spades, :clubs, :diamonds].each do |suit| # for all suits
+        card = Card.new(2, suit) # create card instances with same value
+        expect(card.suit).must_equal suit # verify suit
+        expect(card.suit).must_be_instance_of Symbol # verify data type
+      end
     end
   end
 
