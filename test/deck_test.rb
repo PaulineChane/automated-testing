@@ -11,9 +11,9 @@ describe Deck do
     @test_deck = Deck.new # Deck object
   end
   describe "constructor" do
-    it "can instantiate a Deck object with 52 Card objects as defined by a standard, 4 suit deck" do
+    it "can instantiate a Deck object" do
       expect(@test_deck).must_be_instance_of Deck # verify instance of Deck created
-      # we can actually test whether we initialized @cards through our "draw" method tests.
+      # we can actually test whether we initialized @cards correctly through our "draw" method tests.
     end
   end
   describe "draw" do
