@@ -1,3 +1,8 @@
+# Pauline Chane (@PaulineChane on GitHub)
+# Ada Developers Academy C14
+# Automated Testing - card_test.rb
+# 09/29/2020
+# wrote additional tests aside from included tests to validate functionality of card.rb
 require_relative 'test_helper'
 
 describe Card do
